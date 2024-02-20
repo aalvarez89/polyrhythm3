@@ -14,6 +14,8 @@ import Cookies from 'js-cookie'
 import download from 'downloadjs'
 import sectionsToMIDI from '../lib/sectionsToMIDI'
 
+// import '../pages/topbar.css'
+
 export default function Social(){
     
     const styles = useTheme(require('../styles/topbar.module.sass'));
@@ -49,7 +51,7 @@ export default function Social(){
     }, []);
 
     return <> 
-    <div className={styles.sellout}
+    {/* <div className={"sellout"}
         style={{ display: popOpen ? null : 'none' }}>
         <div className={styles.sellout_box}>
             {thanks ? <>
@@ -90,10 +92,10 @@ export default function Social(){
                 </div>
             </div>
         </div>
-    </div>
-    <div className={styles.displacer}></div>
+    </div> */}
+    <div className={"displacer"}></div>
     <div className={styles.left}>
-        <div className={styles.button}>
+        {/* <div className={styles.button}>
             <a
                 href="https://ozi.vercel.app"
                 target="_blank"
@@ -122,10 +124,10 @@ export default function Social(){
                 <BiHelpCircle style={{verticalAlign:'middle'}}/> 
             </a>
             <div className={styles.tooltip}>Open help page.</div>
-        </div>
+        </div> */}
     </div>
     <div className={styles.right}>
-        <div 
+        {/* <div 
             className={styles.button}
             >
             <BiShare 
@@ -141,28 +143,28 @@ export default function Social(){
                     })
                 }, [])}/> 
             <div className={styles.tooltip}>share your rhythm</div>
-        </div>
-        <div className={styles.button}>            
+        </div> */}
+        <div className={"button"}>            
             <SiMidi 
                 style={{verticalAlign:'middle'}}
                 onClick={useCallback(()=>{
-                    openPopup(()=>{
+                    // openPopup(()=>{
                         download(
                             sectionsToMIDI(useStore.getState().sections),
                             "Polyrhythm.mid",
                             );
-                    });
+                    // });
                 }, [])}/> 
-            <div className={styles.tooltip}>export midi</div>
+            <div className={"tooltip"}>export midi</div>
         </div>
-        <div className={styles.button}>
+        <div className={"button"}>
             <span onClick={toggleDarkMode}>
                 {darkModeActive ?
                     <BiMoon style={{verticalAlign:'middle'}}/> :
                     <BiSun style={{verticalAlign:'middle'}}/> 
                 }
             </span>
-            <div className={styles.tooltip}>
+            <div className={"tooltip"}>
                 switch to {darkModeActive ? 'light' : 'dark'} mode</div>
         </div>
     </div>
