@@ -49,6 +49,20 @@ export default function Controls({
                     defaultValue={bpm}
                     onInput={value=>setBpm(value)}
                     />
+
+                <>
+                    <input type="range" id="volume" name="volume" min="10" max="300" value={bpm} style={{width: "300px"}} onChange={e => setBpm(e.target.value)} list="markers" />
+
+                    <datalist id="markers">
+                        <option value="10"></option>                       
+                        <option value="40"></option>                       
+                        <option value="80"></option>
+                        <option value="120"></option>
+                        <option value="150"></option>
+                        <option value="300"></option>
+                    </datalist>
+                </>
+
             </div>
             <div 
                 className={styles.settings_button +(editMode=='instrument' ? ' '+styles.edit_mode : '')}
