@@ -117,11 +117,11 @@ export default function Home() {
         <link rel="icon" href={favicon}/>
       </Head>
 
-      <HitTracker/>
+      {/* <HitTracker/> */}
 
       <Main></Main>
 
-      <CookieConsent
+      {/* <CookieConsent
         location="bottom"
         buttonText="Hmmm, bingus"
         cookieName="myAwesomeCookieName2"
@@ -131,7 +131,7 @@ export default function Home() {
         >
         Give me them cookies! I don't VALUE (💰💰💰) your privacy. {" "}
         <span style={{ fontSize: "12px" }}>Just kidding, btw you can support me on buymeacoffee.com/angramme</span>
-      </CookieConsent>
+      </CookieConsent> */}
     </div>
   );
 }
