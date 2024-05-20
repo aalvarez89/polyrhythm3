@@ -8,7 +8,7 @@ function createWindow () {
     webPreferences: {
       nodeIntegration: true
     },
-    // titleBarStyle: 'hidden',
+    titleBarStyle: 'hidden',
     transparent: true,
   })
 

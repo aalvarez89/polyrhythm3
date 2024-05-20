@@ -1,8 +1,9 @@
-import { BiCoffeeTogo, BiShare, BiMoon, BiSun, BiHelpCircle } from 'react-icons/bi'
+import { BiCoffeeTogo, BiShare, BiMoon, BiSun, BiLayout, BiWindowClose } from 'react-icons/bi'
 import { SiAboutDotMe, SiMidi } from 'react-icons/si'
 
-import { sectionsToQuery } from '../lib/serialization'
-import { copyTextToClipboard } from '../lib/clipboard'
+
+// import { sectionsToQuery } from '../lib/serialization'
+// import { copyTextToClipboard } from '../lib/clipboard'
 import { useDarkMode } from 'next-dark-mode'
 import { useTheme } from '../hooks/useTheme'
 
@@ -15,6 +16,9 @@ import download from 'downloadjs'
 import sectionsToMIDI from '../lib/sectionsToMIDI'
 
 // import '../pages/topbar.css'
+
+// const { remote } = require("electron");
+// const win = remote.BrowserWindow.getFocusedWindow();
 
 export default function Social(){
     
@@ -45,10 +49,10 @@ export default function Social(){
         }});
     }, []);
 
-    const coffeeButton = useCallback(()=>{
-        setThanks(true);
-        Cookies.set('is_supporter_already', 'yes', {expires: 111});
-    }, []);
+    // const coffeeButton = useCallback(()=>{
+    //     setThanks(true);
+    //     Cookies.set('is_supporter_already', 'yes', {expires: 111});
+    // }, []);
 
     return <> 
     {/* <div className={"sellout"}
@@ -94,37 +98,26 @@ export default function Social(){
         </div>
     </div> */}
     <div className={"displacer"}></div>
+    
     <div className={styles.left}>
-        {/* <div className={styles.button}>
-            <a
-                href="https://ozi.vercel.app"
-                target="_blank"
-                rel="noopener"
-                >
-                <SiAboutDotMe style={{verticalAlign:'middle'}}/> 
-            </a>
-            <div className={styles.tooltip}>my website</div>
+
+        <div className={styles.button} title='Close Metronome'>            
+            <BiWindowClose 
+                style={{verticalAlign:'middle'}}
+                onClick={useCallback(()=>{
+                        window.close()
+                }, [])}/>  
+            <div className={styles.tooltip}>Close</div>
         </div>
-        <div className={styles.button}>
-            <a
-                href="https://www.buymeacoffee.com/angramme"
-                target="_blank"
-                rel="noopener"
-                >
-                <BiCoffeeTogo style={{verticalAlign:'middle'}}/> 
-            </a>
-            <div className={styles.tooltip}>buy me a coffee</div>
+
+        <div className={styles.dragWindow}>
+            <div className={styles.button} title='Drag Window'>            
+                <BiLayout 
+                    style={{verticalAlign:'middle'}}/> 
+                {/* <div className={styles.tooltip}>Drag Window</div> */}
+            </div>
         </div>
-        <div className={styles.button}>
-            <a
-                href="https://github.com/Angramme/polyrhythm3#tutorial"
-                target="_blank"
-                rel="noopener"
-                >
-                <BiHelpCircle style={{verticalAlign:'middle'}}/> 
-            </a>
-            <div className={styles.tooltip}>Open help page.</div>
-        </div> */}
+        
     </div>
     <div className={styles.right}>
         {/* <div 
@@ -144,7 +137,7 @@ export default function Social(){
                 }, [])}/> 
             <div className={styles.tooltip}>share your rhythm</div>
         </div> */}
-        <div className={"button"}>            
+        <div className={styles.button} title='export midi'>            
             <SiMidi 
                 style={{verticalAlign:'middle'}}
                 onClick={useCallback(()=>{
@@ -155,17 +148,16 @@ export default function Social(){
                             );
                     // });
                 }, [])}/> 
-            <div className={"tooltip"}>export midi</div>
+            <div className={styles.tooltip}>Export Midi</div>
         </div>
-        <div className={"button"}>
+        <div className={styles.button}>
             <span onClick={toggleDarkMode}>
                 {darkModeActive ?
                     <BiMoon style={{verticalAlign:'middle'}}/> :
                     <BiSun style={{verticalAlign:'middle'}}/> 
                 }
             </span>
-            <div className={"tooltip"}>
-                switch to {darkModeActive ? 'light' : 'dark'} mode</div>
+            <div className={styles.tooltip}>{darkModeActive ? 'Light' : 'Dark'} mode</div>
         </div>
     </div>
     </>

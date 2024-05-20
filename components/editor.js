@@ -90,7 +90,7 @@ export default function Editor(){
                     </td>
                 </tr>
                 <tr className={styles.remove_btn}>
-                    <th>remove</th>
+                    {/* <th>remove</th> */}
                     <td>
                     <Field type="button" value="remove" {...(sections.length <= 1 ? {disabled:true} : {})}
                         onClick={up(()=>{
